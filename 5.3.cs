@@ -33,18 +33,10 @@ namespace _5._3
                 field[i] = new char[10];
                 for(int j = 0; j < field[i].Length; j++)
                 {
-                    field[0][0] = '@';
-                   /* if (i == field.Length - 1)
-                    {
-                        field[i][j] = ' ';
-                    }
-                    else
-                    {*/
-                        field[i][j] = '_';
-                        field[i][med] = medCh;
-                        field[i][bomb] = bombCh;
-                        //field[i][field[i].Length - 1] = ' ';
-                    //}
+                    field[0][0] = '@';                   
+                    field[i][j] = '_';
+                    field[i][med] = medCh;
+                    field[i][bomb] = bombCh;                        
                 }
             }
             for(int i = 0; i < field.Length; i++)
