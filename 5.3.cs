@@ -6,7 +6,7 @@ namespace _5._3
     {
         static void Main(string[] args)
         {
-            char[][] field = new char[11][];
+            char[][] field = new char[10][];
             Random medRnd = new Random();
             Random bombRnd = new Random();
             int med;
@@ -20,31 +20,31 @@ namespace _5._3
             {
                 if (i == 0)
                 {
-                    med = medRnd.Next(1, field.Length - 1);
+                    med = medRnd.Next(1, field.Length);
                 }
                 else
                 {
-                    med = medRnd.Next(0, field.Length - 1);
+                    med = medRnd.Next(0, field.Length);
                 }
                 do
                 {
-                    bomb = bombRnd.Next(0, field.Length - 1);
+                    bomb = bombRnd.Next(0, field.Length);
                 } while (med == bomb);
-                field[i] = new char[11];
+                field[i] = new char[10];
                 for(int j = 0; j < field[i].Length; j++)
                 {
                     field[0][0] = '@';
-                    if (i == field.Length - 1)
+                   /* if (i == field.Length - 1)
                     {
                         field[i][j] = ' ';
                     }
                     else
-                    {
+                    {*/
                         field[i][j] = '_';
                         field[i][med] = medCh;
                         field[i][bomb] = bombCh;
-                        field[i][field[i].Length - 1] = ' ';
-                    }
+                        //field[i][field[i].Length - 1] = ' ';
+                    //}
                 }
             }
             for(int i = 0; i < field.Length; i++)
@@ -68,7 +68,7 @@ namespace _5._3
                         {
                             if (field[j][k] == '@')
                             {                                
-                                if (k == field[j].Length - 2)
+                                if (k == field[j].Length - 1)
                                 {                                    
                                     if (field[j][0] == '+')
                                     {
@@ -98,7 +98,7 @@ namespace _5._3
                                 check = field[j][k];                                
                                 field[j][k] = field[j][k + 1];
                                 field[j][k + 1] = check;
-                                if (j == field.Length - 2 && k == field[j].Length - 3)
+                                if (j == field.Length - 1 && k == field[j].Length - 2)
                                 {
                                     flag = false;
                                 }
@@ -118,20 +118,20 @@ namespace _5._3
                             {                                
                                 if (k == 0)
                                 {                                    
-                                    if (field[j][field[j].Length - 2] == '+')
+                                    if (field[j][field[j].Length - 1] == '+')
                                     {
-                                        field[j][field[j].Length - 2] = '_';
+                                        field[j][field[j].Length - 1] = '_';
                                         hp += 40;
                                     }
-                                    if (field[j][field[j].Length - 2] == '*')
+                                    if (field[j][field[j].Length - 1] == '*')
                                     {
-                                        field[j][field[j].Length - 2] = '_';
+                                        field[j][field[j].Length - 1] = '_';
                                         hp -= 40;
                                     }
                                     check = field[j][k];
-                                    field[j][k] = field[j][field[j].Length - 2];
-                                    field[j][field[j].Length - 2] = check;
-                                    if (j == field.Length - 2)
+                                    field[j][k] = field[j][field[j].Length - 1];
+                                    field[j][field[j].Length - 1] = check;
+                                    if (j == field.Length - 1)
                                     {
                                         flag = false;
                                     }
@@ -168,20 +168,20 @@ namespace _5._3
                                 flagCh = true;                               
                                 if (j == 0)
                                 {                                    
-                                    if (field[field.Length - 2][k] == '+')
+                                    if (field[field.Length - 1][k] == '+')
                                     {
-                                        field[field.Length - 2][k] = '_';
+                                        field[field.Length - 1][k] = '_';
                                         hp += 40;
                                     }
-                                    if (field[field.Length - 2][k] == '*')
+                                    if (field[field.Length - 1][k] == '*')
                                     {
-                                        field[field.Length - 2][k] = '_';
+                                        field[field.Length - 1][k] = '_';
                                         hp -= 40;
                                     }
                                     check = field[j][k];
-                                    field[j][k] = field[field.Length-2][k];
-                                    field[field.Length-2][k] = check;
-                                    if (k == field[j].Length - 2)
+                                    field[j][k] = field[field.Length-1][k];
+                                    field[field.Length-1][k] = check;
+                                    if (k == field[j].Length - 1)
                                     {
                                         flag = false;
                                     }
@@ -220,7 +220,7 @@ namespace _5._3
                             if (field[j][k] == '@')
                             {
                                 flagCh = true;                                
-                                if (j == field.Length - 2)
+                                if (j == field.Length - 1)
                                 {                                    
                                     if (field[j][k] == '+')
                                     {
@@ -250,7 +250,7 @@ namespace _5._3
                                 check = field[j][k];
                                 field[j][k] = field[j + 1][k];
                                 field[j + 1][k] = check;
-                                if (j == field.Length - 3 && k == field[j].Length - 2)
+                                if (j == field.Length - 2 && k == field[j].Length - 1)
                                 {
                                     flag = false;
                                 }
